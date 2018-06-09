@@ -1,0 +1,86 @@
+html, body {
+  font-size: 10px; 
+}
+
+* {
+  margin: 0;
+  padding: 0; 
+}
+
+
+.component {
+  position: relative;
+  display: inline-block;
+  padding: 50px;
+}
+
+.component table {
+  border: 1px solid #48AAE7;
+}
+
+.component td {
+  width: 50px;
+  height: 50px;
+  background-color: #48AAE7;
+}
+
+.component .btn {
+  width: 50px;
+  height: 50px;
+  position:absolute;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.component .btn-minus {
+  background-color: #B20000;
+}
+
+.component .btn-minus:hover {
+  background-color: #CA4C49;
+}
+
+.component .btn-plus {
+  background-color: #F3A500;
+}
+
+.component .btn-plus:hover {
+  background-color: #F7C052;
+}
+
+.component #top_minus {
+  top: 0;
+  margin-left: 51px;
+  border-bottom: 4px solid transparent;
+  background-clip: padding-box;
+  display: none;
+}
+
+.component #left_minus {
+  left: 0;
+  margin-top: 51px;
+  border-right: 4px solid transparent;
+  background-clip: padding-box;
+  display: none;
+}
+
+.component #right_plus {
+  top: 53px;
+  right: 0;
+}
+
+.component #bottom_plus {
+  bottom: 0;
+  left: 53px;
+}
+
