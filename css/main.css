@@ -8,23 +8,25 @@ html, body {
 }
 
 
-.component {
-  position: relative;
+#component {
+  position: absolute;
   display: inline-block;
   padding: 50px;
+  border: 1px solid red;
 }
 
-.component table {
+#component table {
   border: 1px solid #48AAE7;
+  margin: 2px;
 }
 
-.component td {
+#component td {
   width: 50px;
   height: 50px;
   background-color: #48AAE7;
 }
 
-.component .btn {
+#component .btn {
   width: 50px;
   height: 50px;
   position:absolute;
@@ -42,45 +44,55 @@ html, body {
   transition: all 0.2s;
 }
 
-.component .btn-minus {
+#component .btn-minus {
   background-color: #B20000;
 }
 
-.component .btn-minus:hover {
+#component .btn-minus:hover {
   background-color: #CA4C49;
 }
 
-.component .btn-plus {
+#component .btn-plus {
   background-color: #F3A500;
 }
 
-.component .btn-plus:hover {
+#component .btn-plus:hover {
   background-color: #F7C052;
 }
 
-.component #top_minus {
+#component #top_minus {
   top: 0;
-  margin-left: 51px;
-  border-bottom: 4px solid transparent;
-  background-clip: padding-box;
+  /*margin-left: 51px;*/
+  /* border-bottom: 4px solid transparent;*/
+  background-clip: padding-box; 
   display: none;
+  border-bottom: 6px solid transparent;
+  /* display: flex; */
+
 }
 
-.component #left_minus {
+#component #left_minus {
   left: 0;
-  margin-top: 51px;
-  border-right: 4px solid transparent;
+  /*margin-top: 51px;*/
+  border-right: 6px solid transparent;
   background-clip: padding-box;
   display: none;
+  /* border-right: 2px solid red; */
+  /* display: flex; */
 }
 
-.component #right_plus {
-  top: 53px;
+#component #right_plus {
+  /*top: 53px; */
+  /*right: 0; */
+  /*top: 53px; */
+  margin-top: 5px;
   right: 0;
+  
 }
 
-.component #bottom_plus {
+#component #bottom_plus {
   bottom: 0;
-  left: 53px;
+  margin-left: 5px;
+  /*left: 53px; */
 }
 
