@@ -8,7 +8,6 @@ var allRows;
 var buttons;
 var component = document.getElementById('component');
 
-
 function init() {
 	addRowBtn = document.getElementById('bottom_plus');
 	addCellBtn = document.getElementById('right_plus');
@@ -31,7 +30,6 @@ function init() {
 	
 	initItems();
 };
-
 
 component.onmousedown = function(e) {
 
