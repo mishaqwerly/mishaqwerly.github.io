@@ -10,10 +10,9 @@ class Grid {
 		this.buttons = document.getElementsByClassName('btn-minus');
 		this.component = document.getElementById('component');
 		this.document = document;
+		//this.x = false;
 		
-		this.component.addEventListener("mousedown", evt => this.componentMouseDown(evt));
-		this.component.addEventListener("dragstart", () => false);
-	
+
 		let buttons = document.getElementsByClassName('btn-minus');
 		Array.from(buttons).forEach(function(btn) {
 			btn.addEventListener("mouseover", function() { this.style.display = 'flex'});
@@ -26,6 +25,12 @@ class Grid {
 		this.addRowBtn.addEventListener("click", evt => this.addRow(evt));
 		this.removeCellBtn.addEventListener("click", evt => this.removeCell(evt));
 		this.removeRowBtn.addEventListener("click", evt => this.removeRow(evt));
+
+		this.component.addEventListener("mousedown", evt => this.componentMouseDown(evt));
+		/*if (this.x === true) {
+			
+		}*/
+		
 	}
 
 	cellMouseover(evt) {
@@ -45,10 +50,12 @@ class Grid {
 		}
 	}
 
+
 	cellMouseout(evt) {
 		this.removeCellBtn.style.display = 'none';
 		this.removeRowBtn.style.display = 'none';
 	};
+
 
 	addCell(evt) {
 		Array.from(this.allRows).forEach(function(rows) {
@@ -56,6 +63,7 @@ class Grid {
 			newCell.classList.add("item");
 		});
 	};
+
 
 	addRow(evt) {
 		var newRow = this.table.insertRow(-1);
@@ -66,12 +74,11 @@ class Grid {
 		});
 	};
 
-	removeCell(evt) { 
 
+	removeCell(evt) { 
 	    var cellIndex = evt.target.getAttribute('data-cell-index');
 		Array.from(this.allRows).forEach(function(row) {
 			row.deleteCell(cellIndex);
-			console.log('row - '+row.childElementCount);
 		});
 
 		if(this.allRows[0].childElementCount <= cellIndex || this.allRows[0].childElementCount === 1) {
@@ -89,14 +96,22 @@ class Grid {
 
 	componentMouseDown(evt) {
 		let coords = this.getCoords(evt.currentTarget);
+
+		//this.x = true;
+
 		this.shiftX = evt.pageX - coords.left;
 		this.shiftY = evt.pageY - coords.top;
 
-		this.moveAt(evt);
+		
+
+		if(this.handlerMoveAt !== undefined) {
+			document.removeEventListener("mousemove", this.handlerMoveAt);
+		}
+		console.log(this.handlerMoveAt);
 
 		this.handlerMoveAt = evt => this.moveAt(evt);
 		document.addEventListener("mousemove", this.handlerMoveAt);
-		
+
 		this.handlerStopMove = evt => this.stopMove(evt);
 		evt.currentTarget.addEventListener("mouseup", this.handlerStopMove);
 	}
@@ -104,13 +119,16 @@ class Grid {
 	moveAt(evt) {
 		this.component.style.left = evt.pageX - this.shiftX + 'px';
 		this.component.style.top = evt.pageY - this.shiftY + 'px';
+		this.removeCellBtn.style.display = 'none';
+		this.removeRowBtn.style.display = 'none';
 	}
 
 	stopMove(evt) {
 		document.removeEventListener("mousemove", this.handlerMoveAt);
 		evt.target.removeEventListener("mouseup", this.handlerStopMove);
 	}
-
+	
+	
 	getCoords(elem) {
 		var box = elem.getBoundingClientRect();
 		return {
@@ -118,6 +136,7 @@ class Grid {
 			left: box.left + pageXOffset
 		};
 	}
+
 }
 
 var grid = new Grid();

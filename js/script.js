@@ -37,7 +37,7 @@ component.onmousedown = function(e) {
   var shiftX = e.pageX - coords.left;
   var shiftY = e.pageY - coords.top;
 
-  moveAt(e);
+  //moveAt(e);
 
   function moveAt(e) {
     component.style.left = e.pageX - shiftX + 'px';
@@ -55,9 +55,9 @@ component.onmousedown = function(e) {
 }
 
 
-component.ondragstart = function() {
+/*component.ondragstart = function() {
   return false;
-};
+};*/
 
 
 function getCoords(elem) {
